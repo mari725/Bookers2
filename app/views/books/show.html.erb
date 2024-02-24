@@ -1,0 +1,52 @@
+<!--#本の詳細ページ-->
+<div class="conteiner">
+  <div class="row">
+    <div class="col-md-3">
+<%= render 'book', books: @books, user: @user %>
+    </div>
+
+<div class="col-md-8 offset-md-1">
+  <h2>Book datail</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+    <%= link_to user_path(@user) do %>
+     <span>
+      <td>
+      <%= image_tag post_image.user.get_profile_image(80,80) %>
+      </td>
+    <td>
+      <%= @user.name %>
+      <% end %>
+    </td>
+      <%= link_to book_path(@book) %>
+    <td><%= book.title %></td>
+      <% end %>
+    <td>
+      <%= book.body %>
+    </td>
+    <% if @user == current.user %>
+    <td>
+      <%= link_to "Edit", edit_book_path(@book) %>
+    </td>
+
+    <td>
+       <%= link_to "Destroy", book_path(@book), method: :delete, class: "btn btn-sm btn-danger", "data-confirm" => "本当に消しますか？" %>
+    </td>
+    </span>
+    </tr>
+
+    <% end %>
+
+  </tbody>
+</table>
+</div>
+</div>
+</div>
